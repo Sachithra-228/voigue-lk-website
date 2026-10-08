@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUp, Facebook, Instagram, Linkedin, Mail, Music2, Phone } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { navItems, site } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
 
@@ -40,9 +40,9 @@ const marqueeItems = [
 ];
 
 export function Footer() {
-  const shouldReduceMotion = useReducedMotion();
-
   const scrollToTop = () => {
+    const shouldReduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     window.scrollTo({ top: 0, behavior: shouldReduceMotion ? "auto" : "smooth" });
   };
 
@@ -79,8 +79,8 @@ export function Footer() {
         <div className="container-x relative z-10 flex flex-1 items-center pt-28">
           <motion.div
             className="grid w-full gap-12 lg:grid-cols-[1.05fr_0.7fr_0.85fr]"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 42 }}
-            whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 42 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true, amount: 0.35 }}
           >
