@@ -5,3 +5,12 @@ export function revalidateCareers() {
   revalidatePath("/");
   revalidatePath("/careers");
 }
+
+export function revalidateLife() {
+  revalidatePath("/life-at-voigue");
+}
+
+export function revalidateBlog() {
+  revalidatePath("/blog");
+  revalidatePath("/blog/[slug]", "page");
+}

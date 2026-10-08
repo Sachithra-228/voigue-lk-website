@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
+import { HideOnAdmin } from "@/components/layout/HideOnAdmin";
 import { Navbar } from "@/components/layout/Navbar";
 import { MotionProvider } from "@/components/ui/MotionProvider";
 import { site } from "@/lib/content";
@@ -24,7 +25,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <MotionProvider>
           <Navbar />
           <main className="overflow-x-clip">{children}</main>
-          <Footer />
+          <HideOnAdmin>
+            <Footer />
+          </HideOnAdmin>
         </MotionProvider>
       </body>
     </html>

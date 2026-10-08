@@ -47,6 +47,9 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
 
+  // The admin area has its own sidebar layout.
+  if (pathname.startsWith("/admin")) return null;
+
   return (
     <>
       <header

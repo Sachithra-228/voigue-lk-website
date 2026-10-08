@@ -22,7 +22,14 @@ export default async function BlogPostPage({ params }: Props) {
         <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">{post.title}</h1>
         <p className="mt-5 text-lg leading-8 text-muted">{post.excerpt}</p>
         <div className="mt-12 space-y-6 text-lg leading-8 text-muted">
-          <p>{post.content}</p>
+          {(post.content ?? "")
+            .split(/\n\s*\n/)
+            .filter(Boolean)
+            .map((paragraph, index) => (
+              <p key={index} className="whitespace-pre-line">
+                {paragraph}
+              </p>
+            ))}
         </div>
       </div>
     </article>

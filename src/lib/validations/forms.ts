@@ -58,6 +58,60 @@ export const jobSchema = z.object({
   featured: z.boolean().optional()
 });
 
+
+const optionalText = (max: number) => z.string().trim().max(max).optional().or(z.literal(""));
+
+/** A photo uploaded through the admin ("/media/..."). Empty means "use the placeholder". */
+const imageRef = z
+  .string()
+  .trim()
+  .max(500)
+  .regex(/^\/media\/[\w\-./]+$/, "Please upload the image with the Upload button")
+  .optional()
+  .or(z.literal(""));
+
+const slugField = z
+  .string()
+  .trim()
+  .min(2, "Slug is required")
+  .max(120)
+  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Use lowercase letters, numbers and hyphens only");
+
+export const momentCategoryOptions = ["Parties", "Events", "Community"] as const;
+
+export const voiceSchema = z.object({
+  name: z.string().trim().min(2, "Name is required").max(120),
+  role: optionalText(120),
+  quote: z.string().trim().min(10, "The quote needs at least 10 characters").max(600),
+  image: imageRef,
+  order: z.number().int().min(0).max(9999).optional(),
+  published: z.boolean()
+});
+
+export const momentSchema = z.object({
+  title: z.string().trim().min(2, "Title is required").max(120),
+  category: z.enum(momentCategoryOptions, { message: "Choose a category" }),
+  image: imageRef,
+  order: z.number().int().min(0).max(9999).optional(),
+  published: z.boolean()
+});
+
+export const postSchema = z.object({
+  title: z.string().trim().min(2, "Title is required").max(160),
+  slug: slugField,
+  excerpt: optionalText(400),
+  content: z.string().trim().max(30000).optional().or(z.literal("")),
+  category: optionalText(80),
+  author: optionalText(120),
+  coverImage: imageRef,
+  published: z.boolean()
+});
+
+export const imageUpload = {
+  maxBytes: 4 * 1024 * 1024,
+  kinds: ["voices", "moments", "posts"] as const
+};
+
 export const applicationStatuses = ["New", "Reviewing", "Shortlisted", "Interview", "Rejected", "Hired"] as const;
 
 export const loginSchema = z.object({

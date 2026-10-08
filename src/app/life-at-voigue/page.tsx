@@ -103,7 +103,7 @@ export default async function LifeAtVoiguePage() {
         </div>
       </section>
 
-      <LifeAroundHere moments={moments} />
+      {moments.length ? <LifeAroundHere moments={moments} /> : null}
 
       <section className="bg-paper py-20 lg:py-28">
         <div className="container-x max-w-4xl">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { requireAdmin } from "@/lib/auth";
 import { connectToDatabase } from "@/lib/mongodb";
@@ -7,20 +8,30 @@ import Job from "@/models/Job";
 
 function Login({ failed }: { failed: boolean }) {
   return (
-    <section className="bg-white pt-32">
-      <div className="container-x max-w-md py-16">
-        <h1 className="text-4xl font-semibold">Admin login</h1>
-        <form action="/api/auth/login" method="post" className="mt-8 grid gap-4 rounded-2xl border border-line bg-paper p-6">
-          <label className="grid gap-2 text-sm font-medium">
+    <section className="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_85%_8%,hsl(var(--lilac-deep)),transparent_40%),hsl(var(--paper))] px-4 py-10">
+      <div className="w-full max-w-md">
+        <div className="relative mx-auto h-12 w-44">
+          <Image src="/images/nav_logo_transparent.png" alt="Voigue" fill sizes="176px" className="object-contain" priority />
+        </div>
+        <form action="/api/auth/login" method="post" className="mt-8 grid gap-5 rounded-3xl border border-line bg-white p-8 shadow-soft">
+          <div>
+            <h1 className="text-2xl font-semibold text-ink">Admin sign in</h1>
+            <p className="mt-1 text-sm text-muted">Manage jobs, applications and website content.</p>
+          </div>
+          <label className="grid gap-1.5 text-sm font-semibold text-ink">
             Email
-            <input name="email" type="email" className="focus-ring rounded-xl border border-line px-4 py-3" required />
+            <input name="email" type="email" autoComplete="username" className="focus-ring rounded-xl border border-line px-4 py-3 text-sm font-normal" required />
           </label>
-          <label className="grid gap-2 text-sm font-medium">
+          <label className="grid gap-1.5 text-sm font-semibold text-ink">
             Password
-            <input name="password" type="password" className="focus-ring rounded-xl border border-line px-4 py-3" required />
+            <input name="password" type="password" autoComplete="current-password" className="focus-ring rounded-xl border border-line px-4 py-3 text-sm font-normal" required />
           </label>
-          <button className="focus-ring rounded-full bg-ink px-5 py-3 font-semibold text-white">Sign in</button>
-          {failed ? <p className="text-sm text-red-700">Invalid credentials or admin environment is not configured.</p> : null}
+          <button className="focus-ring rounded-full bg-brand-violet px-5 py-3 font-semibold text-white transition hover:bg-brand-blue">Sign in</button>
+          {failed ? (
+            <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
+              Invalid credentials, or the admin login isn&apos;t configured on this server.
+            </p>
+          ) : null}
         </form>
       </div>
     </section>
