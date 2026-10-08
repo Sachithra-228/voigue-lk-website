@@ -3,6 +3,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import bcrypt from "bcryptjs";
 
 const cookieName = "voigue_admin";
+const sessionMaxAgeSeconds = 60 * 60 * 8;
 
 function sign(value: string) {
   const secret = process.env.AUTH_SECRET;
@@ -25,7 +26,7 @@ export async function setAdminSession(email: string) {
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
     path: "/",
-    maxAge: 60 * 60 * 8
+    maxAge: sessionMaxAgeSeconds
   });
 }
 
@@ -36,9 +37,18 @@ export async function clearAdminSession() {
 export async function requireAdmin() {
   const session = (await cookies()).get(cookieName)?.value;
   if (!session) return false;
-  const [payload, signature] = session.split(".");
-  if (!payload || !signature) return false;
+  // The payload is "email:timestamp" and the email itself contains dots, so split on the LAST dot.
+  const dot = session.lastIndexOf(".");
+  if (dot <= 0) return false;
+  const payload = session.slice(0, dot);
+  const signature = session.slice(dot + 1);
+  if (!signature) return false;
+
   const expected = Buffer.from(sign(payload));
   const received = Buffer.from(signature);
-  return received.length === expected.length && timingSafeEqual(received, expected);
+  if (received.length !== expected.length || !timingSafeEqual(received, expected)) return false;
+
+  // Enforce the 8-hour session limit on the server too, not just through the cookie's expiry.
+  const issuedAt = Number(payload.slice(payload.lastIndexOf(":") + 1));
+  return Number.isFinite(issuedAt) && Date.now() - issuedAt < sessionMaxAgeSeconds * 1000;
 }
