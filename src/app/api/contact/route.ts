@@ -6,13 +6,28 @@ import { contactSchema } from "@/lib/validations/forms";
 import ContactSubmission from "@/models/ContactSubmission";
 
 export async function POST(request: Request) {
-  const parsed = contactSchema.safeParse(await request.json());
-  if (!parsed.success) return NextResponse.json({ error: "Invalid submission" }, { status: 400 });
+  const body = await request.json().catch(() => null);
+
+  // Honeypot: real visitors never see or fill this field.
+  if (body && typeof body.website === "string" && body.website.trim()) {
+    return NextResponse.json({ ok: true }, { status: 201 });
+  }
+
+  const parsed = contactSchema.safeParse(body);
+  if (!parsed.success) return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Invalid submission" }, { status: 400 });
 
   try {
     await connectToDatabase();
     const doc = await ContactSubmission.create(parsed.data);
-    await sendNotification("New Voigue enquiry", `${parsed.data.name} from ${parsed.data.company || "Unknown company"}: ${parsed.data.message}`);
+    try {
+      const { firstName, lastName, email, phone, message } = parsed.data;
+      await sendNotification(
+        "New Voigue.lk enquiry",
+        `${firstName} ${lastName} <${email}>${phone ? ` / ${phone}` : ""}\n\n${message}`
+      );
+    } catch {
+      // The enquiry is saved; a failed notification must not fail the visitor's submission.
+    }
     return NextResponse.json({ id: doc._id }, { status: 201 });
   } catch {
     return NextResponse.json({ error: "Contact storage is not configured" }, { status: 503 });

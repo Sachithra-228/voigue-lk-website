@@ -1,20 +1,19 @@
-import { site, services, industries, fallbackPosts } from "@/lib/content";
+import { site } from "@/lib/content";
+import { getPosts } from "@/lib/query";
 
-export function GET() {
+export async function GET() {
+  const posts = await getPosts();
   const paths = [
     "",
     "/about",
-    "/services",
-    "/industries",
+    "/life-at-voigue",
     "/careers",
-    "/insights",
+    "/blog",
     "/contact",
     "/privacy-policy",
     "/terms",
     "/cookie-policy",
-    ...services.map((item) => `/services/${item.slug}`),
-    ...industries.map((item) => `/industries/${item.slug}`),
-    ...fallbackPosts.map((item) => `/insights/${item.slug}`)
+    ...posts.map((item) => `/blog/${item.slug}`)
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

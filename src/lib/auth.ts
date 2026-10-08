@@ -38,6 +38,7 @@ export async function requireAdmin() {
   if (!session) return false;
   const [payload, signature] = session.split(".");
   if (!payload || !signature) return false;
-  const expected = sign(payload);
-  return timingSafeEqual(Buffer.from(signature), Buffer.from(expected));
+  const expected = Buffer.from(sign(payload));
+  const received = Buffer.from(signature);
+  return received.length === expected.length && timingSafeEqual(received, expected);
 }

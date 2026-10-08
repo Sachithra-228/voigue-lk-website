@@ -1,87 +1,67 @@
 import { connectToDatabase } from "@/lib/mongodb";
-import { fallbackJobs, fallbackPosts, industries, services } from "@/lib/content";
+import { fallbackJobs, fallbackMoments, fallbackPosts, fallbackVoices } from "@/lib/content";
 import Job from "@/models/Job";
 import BlogPost from "@/models/BlogPost";
-import Service from "@/models/Service";
-import Industry from "@/models/Industry";
-import type { PublicIndustry, PublicJob, PublicPost, PublicService } from "@/types/content";
+import Moment from "@/models/Moment";
+import Testimonial from "@/models/Testimonial";
+import type { PublicJob, PublicMoment, PublicPost, PublicVoice } from "@/types/content";
 
-export async function getServices() {
-  try {
-    await connectToDatabase();
-    const docs = await Service.find({ published: true }).sort({ order: 1, title: 1 }).lean<PublicService[]>();
-    return docs.length ? docs : services;
-  } catch {
-    return services;
-  }
+/*
+ * Each getter returns database content when MongoDB is reachable (even if that is an empty list,
+ * so the team can take everything down) and only falls back to placeholder content when the
+ * database is not configured or unreachable.
+ */
+
+function plain<T>(docs: unknown): T {
+  return JSON.parse(JSON.stringify(docs)) as T;
 }
 
-export async function getService(slug: string) {
+export async function getJobs(): Promise<PublicJob[]> {
   try {
     await connectToDatabase();
-    const doc = await Service.findOne({ slug, published: true }).lean<PublicService>();
-    return doc || services.find((service) => service.slug === slug) || null;
-  } catch {
-    return services.find((service) => service.slug === slug) || null;
-  }
-}
-
-export async function getIndustries() {
-  try {
-    await connectToDatabase();
-    const docs = await Industry.find({ published: true }).sort({ title: 1 }).lean<PublicIndustry[]>();
-    return docs.length ? docs : industries;
-  } catch {
-    return industries;
-  }
-}
-
-export async function getIndustry(slug: string) {
-  try {
-    await connectToDatabase();
-    const doc = await Industry.findOne({ slug, published: true }).lean<PublicIndustry>();
-    return doc || industries.find((industry) => industry.slug === slug) || null;
-  } catch {
-    return industries.find((industry) => industry.slug === slug) || null;
-  }
-}
-
-export async function getJobs() {
-  try {
-    await connectToDatabase();
-    const docs = await Job.find({ status: "Active" }).sort({ featured: -1, createdAt: -1 }).lean<PublicJob[]>();
-    return docs.length ? docs : fallbackJobs;
+    const docs = await Job.find({ status: "Active" }).sort({ featured: -1, createdAt: -1 }).lean();
+    return plain<PublicJob[]>(docs);
   } catch {
     return fallbackJobs;
   }
 }
 
-export async function getJob(slug: string) {
+export async function getPosts(): Promise<PublicPost[]> {
   try {
     await connectToDatabase();
-    const doc = await Job.findOne({ slug, status: "Active" }).lean<PublicJob>();
-    return doc || fallbackJobs.find((job) => job.slug === slug) || null;
-  } catch {
-    return fallbackJobs.find((job) => job.slug === slug) || null;
-  }
-}
-
-export async function getPosts() {
-  try {
-    await connectToDatabase();
-    const docs = await BlogPost.find({ published: true }).sort({ publishedAt: -1 }).lean<PublicPost[]>();
-    return docs.length ? docs : fallbackPosts;
+    const docs = await BlogPost.find({ published: true }).sort({ publishedAt: -1 }).lean();
+    return docs.length ? plain<PublicPost[]>(docs) : fallbackPosts;
   } catch {
     return fallbackPosts;
   }
 }
 
-export async function getPost(slug: string) {
+export async function getPost(slug: string): Promise<PublicPost | null> {
   try {
     await connectToDatabase();
-    const doc = await BlogPost.findOne({ slug, published: true }).lean<PublicPost>();
-    return doc || fallbackPosts.find((post) => post.slug === slug) || null;
+    const doc = await BlogPost.findOne({ slug, published: true }).lean();
+    return doc ? plain<PublicPost>(doc) : fallbackPosts.find((post) => post.slug === slug) || null;
   } catch {
     return fallbackPosts.find((post) => post.slug === slug) || null;
+  }
+}
+
+export async function getVoices(): Promise<PublicVoice[]> {
+  try {
+    await connectToDatabase();
+    const docs = await Testimonial.find({ published: true }).sort({ order: 1, createdAt: -1 }).lean();
+    return plain<PublicVoice[]>(docs);
+  } catch {
+    return fallbackVoices;
+  }
+}
+
+export async function getMoments(): Promise<PublicMoment[]> {
+  try {
+    await connectToDatabase();
+    const docs = await Moment.find({ published: true }).sort({ order: 1, createdAt: -1 }).lean();
+    return plain<PublicMoment[]>(docs);
+  } catch {
+    return fallbackMoments;
   }
 }

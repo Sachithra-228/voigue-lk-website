@@ -2,14 +2,17 @@ import mongoose, { Schema } from "mongoose";
 
 const ApplicationSchema = new Schema(
   {
-    jobId: { type: Schema.Types.Mixed, required: true, index: true },
+    type: { type: String, enum: ["role", "general"], default: "role", index: true },
+    jobId: { type: Schema.Types.Mixed, index: true },
+    jobTitle: String,
     name: { type: String, required: true },
     email: { type: String, required: true, index: true },
-    phone: String,
-    linkedin: String,
-    portfolio: String,
-    coverLetter: String,
+    message: String,
+    roleInterest: String,
+    preferredSetup: { type: String, enum: ["Remote", "Hybrid", "On-site"] },
     cvUrl: String,
+    cvPathname: String,
+    cvFileName: String,
     status: {
       type: String,
       enum: ["New", "Reviewing", "Shortlisted", "Interview", "Rejected", "Hired"],

@@ -1,198 +1,228 @@
-import {
-  BriefcaseBusiness,
-  Building2,
-  Code2,
-  Globe2,
-  Headphones,
-  LineChart,
-  Megaphone,
-  ShieldCheck,
-  Sparkles,
-  UsersRound
-} from "lucide-react";
-import type { PublicIndustry, PublicJob, PublicPost, PublicService } from "@/types/content";
+import type { PublicJob, PublicMoment, PublicPost, PublicVoice, WorkSetup } from "@/types/content";
 
 export const site = {
   name: "Voigue",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://voigue.com",
-  email: "hello@voigue.com",
-  phone: "(+94) 11 711 0170",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://voigue.lk",
+  website: "www.voigue.com",
+  brandLine: "Bridging people and possibilities across borders.",
   description:
-    "Australian-led managed staffing, BPO, digital and technology solutions delivered through global teams in Sri Lanka.",
-  locations: [
-    {
+    "Voigue is the talent-facing home of Voigue (Pvt) Ltd: see life and work at Voigue, explore current vacancies and apply for international careers from Sri Lanka.",
+  emails: {
+    general: "hello@voigue.com",
+    careers: "careers@voigue.com"
+  },
+  phones: {
+    sriLanka: "011 711 0170",
+    australia: "1300 095 588"
+  },
+  locations: {
+    australia: {
+      country: "Australia",
       city: "Melbourne",
-      address: "470 St Kilda Road, Melbourne, VIC 3004, Australia",
-      note: "Australian headquarters and client-facing leadership"
+      address: "Ground floor, 470 St Kilda Road, Melbourne, VIC 3004, Australia",
+      mapQuery: "470 St Kilda Road, Melbourne, VIC 3004, Australia"
     },
-    {
+    sriLanka: {
+      country: "Sri Lanka",
       city: "Colombo",
-      address: "Orion City IT Park, Colombo, Sri Lanka",
-      note: "Sri Lanka operations centre for managed global teams"
+      address: "No. 736 (4th floor), Bank Building, Dr Danister De Silva Mw, Orion City, Colombo 09",
+      mapQuery: "Orion City, Dr Danister De Silva Mawatha, Colombo 09, Sri Lanka"
     }
+  },
+  social: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/voigue/" },
+    { label: "Instagram", href: "https://www.instagram.com/voigue365?igsi=dDN4NGdtZm5semQ0" },
+    { label: "Facebook", href: "https://www.facebook.com/share/14nRE1USJ8Q/?mibextid=wwXIfr" },
+    { label: "TikTok", href: "https://www.tiktok.com/@voigueptyltd?_r=1&_t=ZS-99TKd3EV1eB" }
   ]
 };
 
+export const openRolesHref = "/careers#current-openings";
+
 export const navItems = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Industries", href: "/industries" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Life at Voigue", href: "/life-at-voigue" },
   { label: "Careers", href: "/careers" },
-  { label: "Insights", href: "/insights" }
+  { label: "Contact Us", href: "/contact" }
 ];
 
-export const services: PublicService[] = [
-  {
-    slug: "managed-staffing",
-    title: "Managed Staffing",
-    eyebrow: "Extended teams",
-    icon: UsersRound,
-    excerpt:
-      "Certified professionals integrated into your business with supervision, quality oversight and Australian-standard delivery.",
-    capabilities: ["Dedicated talent", "Supervisor oversight", "Flexible scaling", "Australian workplace alignment"],
-    problems: ["Local hiring pressure", "Long recruitment cycles", "Limited specialist availability"],
-    benefits: ["Faster onboarding", "Lower operating complexity", "Clear accountability"],
-    industries: ["Technology", "Professional Services", "Finance"],
-    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80"
-  },
-  {
-    slug: "bpo-solutions",
-    title: "BPO Solutions",
-    eyebrow: "Operational support",
-    icon: BriefcaseBusiness,
-    excerpt:
-      "Business process outsourcing for back-office, customer operations, bookkeeping, administration and support workflows.",
-    capabilities: ["Back-office operations", "Virtual assistance", "Bookkeeping", "Customer support"],
-    problems: ["Repetitive admin load", "Rising operating costs", "Inconsistent process quality"],
-    benefits: ["More leadership focus", "Reliable workflows", "Scalable delivery capacity"],
-    industries: ["Retail", "E-commerce", "Healthcare"],
-    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80"
-  },
-  {
-    slug: "technology-services",
-    title: "Technology Services",
-    eyebrow: "Voigue Tech",
-    icon: Code2,
-    excerpt:
-      "Managed technology capability across IT support, software development, QA, DevOps, cybersecurity and infrastructure.",
-    capabilities: ["IT support", "Software developers", "QA engineers", "DevOps", "Cybersecurity"],
-    problems: ["Skills gaps", "Infrastructure strain", "Support backlog"],
-    benefits: ["Certified expertise", "Enterprise-grade support", "Resilient technology operations"],
-    industries: ["Technology", "Professional Services", "Finance"],
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80"
-  },
-  {
-    slug: "digital-marketing",
-    title: "Digital Marketing",
-    eyebrow: "Voigue Digital",
-    icon: Megaphone,
-    excerpt:
-      "Digital specialists for SEO, social media, campaigns, websites and email marketing managed as part of your team.",
-    capabilities: ["SEO specialists", "Campaign managers", "Social media", "Web delivery", "Email marketing"],
-    problems: ["Inconsistent digital execution", "Capacity constraints", "Campaign delivery gaps"],
-    benefits: ["Reliable execution", "Broader specialist coverage", "Better operating rhythm"],
-    industries: ["E-commerce", "Retail", "Professional Services"],
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80"
-  }
+export const footerQuickLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Life at Voigue", href: "/life-at-voigue" },
+  { label: "Blog", href: "/blog" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact Us", href: "/contact" }
 ];
 
-export const industries: PublicIndustry[] = [
-  {
-    slug: "technology",
-    title: "Technology",
-    icon: Code2,
-    excerpt: "Engineering, support and digital operations for technology-led businesses.",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    slug: "professional-services",
-    title: "Professional Services",
-    icon: Building2,
-    excerpt: "Administrative, client service and project support for growing advisory and service firms.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    slug: "finance",
-    title: "Finance",
-    icon: LineChart,
-    excerpt: "Bookkeeping, accounting support and process discipline for finance-heavy workflows.",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    slug: "healthcare",
-    title: "Healthcare",
-    icon: ShieldCheck,
-    excerpt: "Structured support teams for providers that need careful communication and reliable administration.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    slug: "ecommerce",
-    title: "E-commerce",
-    icon: Headphones,
-    excerpt: "Customer support, virtual assistance and marketing operations for online businesses.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80"
-  }
+export const workSetups: { label: WorkSetup; dot: string }[] = [
+  { label: "Remote", dot: "bg-brand-violet" },
+  { label: "Hybrid", dot: "bg-amber-400" },
+  { label: "On-site", dot: "bg-sky-500" }
 ];
 
-export const differentiators = [
-  {
-    title: "Australian-led accountability",
-    body: "Voigue operates with Melbourne-based client leadership and delivery standards designed for Australian businesses."
-  },
-  {
-    title: "Purpose-built Sri Lanka operations",
-    body: "Teams work through Voigue's Colombo operations centre, with infrastructure and management support included."
-  },
-  {
-    title: "Managed partnership model",
-    body: "Voigue does more than place people. Supervisors, quality oversight and account management stay part of delivery."
-  },
-  {
-    title: "Scale without long lock-ins",
-    body: "The current Voigue positioning emphasizes rolling contracts, flexible scaling and replacement support."
-  }
-];
+export const setupDot = (setup?: string) => workSetups.find((item) => item.label === setup)?.dot ?? "bg-line";
 
-export const metrics = [
-  { value: "9+", label: "Years supporting Australian businesses", source: "Verified from current Voigue website" },
-  { value: "100+", label: "Australian businesses served", source: "Verified from current Voigue website" },
-  { value: "200+", label: "Certified professionals", source: "Verified from current Voigue homepage" },
-  { value: "14 days", label: "Average onboarding target", source: "Verified from current Voigue website" }
-];
-
-export const values = [
-  { icon: Globe2, title: "Global perspective", body: "Teams designed for cross-border collaboration and clear communication." },
-  { icon: Sparkles, title: "Human expertise", body: "Skilled professionals supported by training, oversight and career growth." },
-  { icon: ShieldCheck, title: "Operational discipline", body: "Managed delivery, process visibility and practical accountability." }
-];
+/* ---------- Placeholder content (replaced by CMS data when MongoDB has entries) ---------- */
 
 export const fallbackJobs: PublicJob[] = [
   {
-    title: "Virtual Assistant",
-    slug: "virtual-assistant",
-    department: "Business Support",
+    title: "Social Media Executive",
+    slug: "social-media-executive",
+    summary: "Create and manage engaging content that helps grow our brand across social platforms.",
+    workSetup: "Remote",
+    department: "Marketing",
     location: "Sri Lanka",
     employmentType: "Full-time",
-    description: "Support an Australian client with administration, CRM, marketing coordination and day-to-day operations.",
-    responsibilities: ["Manage administrative workflows", "Coordinate client communication", "Maintain CRM and reporting records"],
-    requirements: ["Excellent written English", "Strong organization", "Experience in sales, marketing or support"],
-    benefits: ["International client exposure", "Supportive team environment", "Career development"],
+    description:
+      "As a Social Media Executive at Voigue, you'll be responsible for creating engaging content, supporting campaigns and helping grow our brand across multiple platforms. You'll work closely with the marketing team to ensure our message connects with our audience and reflects who we are.",
+    responsibilities: [
+      "Plan, create and schedule content across social media platforms",
+      "Support brand and campaign initiatives",
+      "Monitor performance and report on engagement",
+      "Stay on top of trends and bring fresh ideas to the team"
+    ],
+    requirements: [
+      "Previous experience in social media or content creation",
+      "A good eye for design, tone and detail",
+      "Strong written English",
+      "A proactive, creative mindset"
+    ],
     status: "Active",
     featured: true
   },
   {
-    title: "System Engineer",
-    slug: "system-engineer",
-    department: "Technology",
-    location: "Colombo / Sri Lanka",
+    title: "Client Success Manager",
+    slug: "client-success-manager",
+    summary: "Be the main point of contact for our clients, supporting day-to-day operations and long-term partnerships.",
+    workSetup: "Hybrid",
+    department: "Client Services",
+    location: "Colombo, Sri Lanka",
     employmentType: "Full-time",
-    description: "Deliver technical support and managed technology services for Australian business clients.",
-    responsibilities: ["Resolve support tickets", "Maintain client systems", "Document technical activity"],
-    requirements: ["IT support experience", "Networking fundamentals", "Strong client communication"],
-    benefits: ["Australian client exposure", "Professional office environment", "Learning opportunities"],
-    status: "Active",
-    featured: true
+    description:
+      "You'll be the main point of contact for our Australian clients, making sure the people we place are supported and the partnership keeps growing. This is a hybrid role split between home and our Colombo office.",
+    responsibilities: [
+      "Own day-to-day communication with assigned clients",
+      "Identify and resolve issues before they grow",
+      "Run regular check-ins with clients and placed talent",
+      "Work with recruitment to plan upcoming needs"
+    ],
+    requirements: [
+      "Experience in account management, customer success or a similar role",
+      "Confident communicator, comfortable with international clients",
+      "Organised, calm under pressure and genuinely people-focused"
+    ],
+    status: "Active"
+  },
+  {
+    title: "Talent Acquisition Executive",
+    slug: "talent-acquisition-executive",
+    summary: "Source, screen and shortlist talent to help us find the right fit for our clients.",
+    workSetup: "On-site",
+    department: "Talent Acquisition",
+    location: "Colombo, Sri Lanka",
+    employmentType: "Full-time",
+    description:
+      "Join our Talent Acquisition team and help match great people with the businesses that need them. You'll handle the journey from first call to shortlisted profile, working side by side with the team in our Colombo office.",
+    responsibilities: [
+      "Source and screen candidates for client roles",
+      "Run initial screening calls and internal interviews",
+      "Prepare and present shortlists to clients",
+      "Keep candidates informed and supported throughout"
+    ],
+    requirements: [
+      "Recruitment or HR experience is an advantage",
+      "Excellent interpersonal and communication skills",
+      "Good judgement when assessing skills and fit"
+    ],
+    status: "Active"
+  },
+  {
+    title: "Graphic Designer",
+    slug: "graphic-designer",
+    summary: "Bring ideas to life through clean, on-brand design across digital and print.",
+    workSetup: "Remote",
+    department: "Marketing",
+    location: "Sri Lanka",
+    employmentType: "Full-time",
+    description:
+      "Create design that looks and feels like Voigue, from social content and campaign assets to documents and presentations. You'll work with a close team of marketers and video creators.",
+    responsibilities: [
+      "Design assets for digital, social and print",
+      "Maintain brand consistency across all materials",
+      "Collaborate with marketing and video teams"
+    ],
+    requirements: [
+      "Portfolio demonstrating strong visual design",
+      "Proficiency in Adobe Creative Suite or Figma",
+      "Attention to detail and a love of typography"
+    ],
+    status: "Active"
+  },
+  {
+    title: "Video Editor",
+    slug: "video-editor",
+    summary: "Edit and produce video content for campaigns, social media and internal projects.",
+    workSetup: "Hybrid",
+    department: "Marketing",
+    location: "Colombo, Sri Lanka",
+    employmentType: "Full-time",
+    description:
+      "Shape the stories we tell about Voigue and our clients: short-form social video, event recaps, campaign pieces and internal content.",
+    responsibilities: [
+      "Edit and produce video for campaigns and social channels",
+      "Add motion graphics, sound and colour where needed",
+      "Manage a content pipeline with multiple deadlines"
+    ],
+    requirements: [
+      "Experience with Premiere Pro, After Effects or similar",
+      "A strong eye for pacing and storytelling",
+      "A portfolio of previous work"
+    ],
+    status: "Active"
+  },
+  {
+    title: "Project Coordinator",
+    slug: "project-coordinator",
+    summary: "Support project delivery and keep workflows on track across teams.",
+    workSetup: "On-site",
+    department: "Operations",
+    location: "Colombo, Sri Lanka",
+    employmentType: "Full-time",
+    description:
+      "Keep projects moving. You'll coordinate across teams, track progress and make sure nothing falls through the cracks, working in person at our Colombo office.",
+    responsibilities: [
+      "Coordinate tasks, timelines and deliverables",
+      "Report on progress and flag risks early",
+      "Support teams with documentation and follow-ups"
+    ],
+    requirements: [
+      "Experience coordinating projects or operations",
+      "Strong organisation and communication",
+      "Comfortable working across several teams at once"
+    ],
+    status: "Active"
   }
+];
+
+export const fallbackVoices: PublicVoice[] = Array.from({ length: 5 }, () => ({
+  name: "Employee name",
+  role: "Role title",
+  quote: "A short testimonial from a Voigue team member will appear here once approved copy and photos are supplied."
+}));
+
+export const momentCategories = ["All Moments", "Parties", "Events", "Community"] as const;
+
+export const fallbackMoments: PublicMoment[] = [
+  { title: "Team celebration", category: "Parties" },
+  { title: "Community day", category: "Community" },
+  { title: "Annual event", category: "Events" },
+  { title: "Year-end party", category: "Parties" },
+  { title: "Giving back", category: "Community" },
+  { title: "Company offsite", category: "Events" },
+  { title: "Festive get-together", category: "Parties" },
+  { title: "Volunteer day", category: "Community" }
 ];
 
 export const fallbackPosts: PublicPost[] = [
@@ -219,23 +249,5 @@ export const fallbackPosts: PublicPost[] = [
     tags: ["Teams", "Operations"],
     content:
       "Clear expectations, communication rhythms and manager visibility are essential for cross-border team performance. This is starter CMS content for review."
-  }
-];
-
-export const faqs = [
-  {
-    question: "What does Voigue provide?",
-    answer:
-      "Voigue provides Australian-led managed staffing, BPO, technology and digital marketing support through global teams."
-  },
-  {
-    question: "Where are Voigue's offices?",
-    answer:
-      "Voigue lists a Melbourne office at 470 St Kilda Road and a Sri Lanka operations centre at Orion City IT Park, Colombo."
-  },
-  {
-    question: "Can the website content be managed from an admin dashboard?",
-    answer:
-      "Yes. Jobs, services, posts, FAQs, testimonials, contacts and applications are modelled for MongoDB-backed management."
   }
 ];

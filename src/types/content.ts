@@ -1,32 +1,11 @@
-import type { LucideIcon } from "lucide-react";
-
-export type PublicService = {
-  slug: string;
-  title: string;
-  eyebrow?: string;
-  excerpt?: string;
-  overview?: string;
-  image?: string;
-  icon?: LucideIcon;
-  capabilities?: string[];
-  problems?: string[];
-  benefits?: string[];
-  industries?: string[];
-  process?: string[];
-};
-
-export type PublicIndustry = {
-  slug: string;
-  title: string;
-  excerpt?: string;
-  content?: string;
-  image?: string;
-  icon?: LucideIcon;
-};
+export type WorkSetup = "Remote" | "Hybrid" | "On-site";
 
 export type PublicJob = {
+  _id?: string;
   title: string;
   slug: string;
+  summary?: string;
+  workSetup?: WorkSetup;
   department?: string;
   location?: string;
   employmentType?: string;
@@ -50,4 +29,19 @@ export type PublicPost = {
   published?: boolean;
   publishedAt?: string | Date;
   tags?: string[];
+};
+
+export type PublicVoice = {
+  name: string;
+  role: string;
+  quote: string;
+  image?: string;
+};
+
+export type MomentCategory = "Parties" | "Events" | "Community";
+
+export type PublicMoment = {
+  title: string;
+  category: MomentCategory;
+  image?: string;
 };

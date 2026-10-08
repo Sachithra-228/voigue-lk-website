@@ -1,13 +1,13 @@
 import mongoose, { Schema } from "mongoose";
 
+/** Employee voices shown on the Life at Voigue page. */
 const TestimonialSchema = new Schema(
   {
-    name: String,
+    name: { type: String, required: true },
     role: String,
-    company: String,
-    quote: String,
+    quote: { type: String, required: true },
     image: String,
-    featured: { type: Boolean, default: false },
+    order: { type: Number, default: 0 },
     published: { type: Boolean, default: false, index: true }
   },
   { timestamps: true }

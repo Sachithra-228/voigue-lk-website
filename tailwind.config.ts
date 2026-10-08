@@ -13,7 +13,12 @@ const config: Config = {
           navy: "hsl(var(--brand-navy) / <alpha-value>)",
           blue: "hsl(var(--brand-blue) / <alpha-value>)",
           teal: "hsl(var(--brand-teal) / <alpha-value>)",
-          copper: "hsl(var(--brand-copper) / <alpha-value>)"
+          copper: "hsl(var(--brand-copper) / <alpha-value>)",
+          violet: "hsl(var(--brand-violet) / <alpha-value>)"
+        },
+        lilac: {
+          DEFAULT: "hsl(var(--lilac) / <alpha-value>)",
+          deep: "hsl(var(--lilac-deep) / <alpha-value>)"
         }
       },
       boxShadow: {

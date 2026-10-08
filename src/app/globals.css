@@ -11,6 +11,9 @@
   --brand-blue: 274 52% 34%;
   --brand-teal: 276 49% 58%;
   --brand-copper: 290 56% 49%;
+  --brand-violet: 256 72% 52%;
+  --lilac: 262 70% 95%;
+  --lilac-deep: 262 58% 89%;
 }
 
 * {
@@ -19,6 +22,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -65,59 +69,8 @@ body {
   }
 }
 
-@keyframes footer-breathe {
-  from {
-    opacity: 0.62;
-    transform: translate(-50%, -50%) scale(1);
-  }
+@keyframes dash-flow {
   to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.08);
+    stroke-dashoffset: -32;
   }
-}
-
-@keyframes footer-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes awards-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(calc(-50% - 12px));
-  }
-}
-
-@keyframes chatbot-pulse {
-  0% {
-    opacity: 0.6;
-    transform: scale(0.96);
-  }
-  70%,
-  100% {
-    opacity: 0;
-    transform: scale(1.42);
-  }
-}
-
-.animate-footer-breathe {
-  animation: footer-breathe 8s ease-in-out infinite alternate;
-}
-
-.animate-footer-marquee {
-  animation: footer-marquee 42s linear infinite;
-}
-
-.animate-awards-marquee {
-  animation: awards-marquee 46s linear infinite;
-}
-
-.animate-chatbot-pulse {
-  animation: chatbot-pulse 2.4s ease-out infinite;
 }

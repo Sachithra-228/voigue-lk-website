@@ -2,11 +2,10 @@ import mongoose, { Schema } from "mongoose";
 
 const ContactSubmissionSchema = new Schema(
   {
-    name: { type: String, required: true },
-    company: String,
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     email: { type: String, required: true, index: true },
     phone: String,
-    service: String,
     message: String,
     status: { type: String, enum: ["New", "Open", "Resolved", "Archived"], default: "New", index: true }
   },
