@@ -1,8 +1,6 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { ImageSlot } from "@/components/ui/ImageSlot";
-import { media } from "@/lib/media";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -22,10 +20,9 @@ const body: Variants = {
 export function Foundation() {
   return (
     <section className="bg-white">
-      <ImageSlot src={media.home.foundation} label="Team photo" className="h-56 w-full sm:h-72 lg:h-80" />
       {/* The observer sits on this wrapper: an element translated out of its own clipping parent never counts as visible. */}
       <motion.div
-        className="container-x py-20 text-center lg:py-28"
+        className="container-x py-24 text-center lg:py-32"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
@@ -34,12 +31,13 @@ export function Foundation() {
         {/* The vertical line and the statement reveal together, sliding up from the bottom. */}
         <div className="mx-auto mt-10 flex w-fit max-w-full items-stretch gap-5 text-left sm:gap-8">
           <motion.span aria-hidden className="w-0.5 origin-bottom bg-ink" variants={line} />
-          <div className="overflow-hidden py-1">
+          {/* The right padding keeps the italic "Always." from being clipped by the box used for the slide-up reveal. */}
+          <div className="overflow-hidden py-1 pr-[0.2em]">
             <motion.h2
               className="text-5xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl"
               variants={statement}
             >
-              People-powered.
+              People-powered
               <br />
               <em className="font-semibold italic">Always.</em>
             </motion.h2>

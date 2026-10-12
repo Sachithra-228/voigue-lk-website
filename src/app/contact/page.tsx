@@ -109,8 +109,11 @@ export default function ContactPage() {
         <div className="container-x">
           <MotionReveal>
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-5xl font-semibold leading-none tracking-tight text-ink sm:text-6xl">
-                People-powered. <em className="font-semibold italic">Always.</em>
+              {/* Two lines, left-aligned inside a centred block, matching the "Our Foundation" statement on the home page. */}
+              <h2 className="mx-auto w-fit text-left text-5xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl">
+                People-powered
+                <br />
+                <em className="font-semibold italic">Always.</em>
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted">
                 From the way we work to the opportunities we create, people stay at the centre of it.

@@ -8,7 +8,6 @@ export const media = {
     /** Short looping moments cut from the promo footage; they play one after another behind the hero copy. */
     heroClips: [] as string[],
     heroPoster: "",
-    foundation: "",
     experience: { culture: "", trust: "", growth: "" }
   },
   about: {
