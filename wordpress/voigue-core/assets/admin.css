@@ -1,0 +1,9 @@
+.voigue-media { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.voigue-media-preview img { display: block; width: 96px; height: 64px; object-fit: cover; border-radius: 6px; border: 1px solid #dcdcde; }
+.voigue-media-name { color: #50575e; min-width: 140px; }
+.voigue-media-remove { color: #b32d2e; }
+.voigue-health td, .voigue-health th { vertical-align: top; }
+.voigue-badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.voigue-badge.ok { background: #d1fae5; color: #065f46; }
+.voigue-badge.warn { background: #fef3c7; color: #92400e; }
+.voigue-badge.bad { background: #fee2e2; color: #991b1b; }

@@ -1,0 +1,111 @@
+<?php
+/**
+ * Template Name: About Us
+ * Template Post Type: page
+ *
+ * Hero, Who We Are, How It Works, Mission & Vision, Future of Work.
+ *
+ * @package Voigue_Theme
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+get_header();
+
+$voigue_steps = array(
+	array(
+		'icon'  => 'file-text',
+		'title' => 'We understand what the client needs',
+		'body'  => 'A client comes to us with a role, a team requirement or a challenge they need support with. We take the time to understand the work, the skills involved and what the right person needs to bring to the team.',
+	),
+	array(
+		'icon'  => 'search',
+		'title' => 'We find the right fit',
+		'body'  => 'Our recruitment team searches, screens and shortlists talent based on the role, experience and what the client actually needs from the person joining them.',
+	),
+	array(
+		'icon'  => 'users',
+		'title' => 'We bring both sides together',
+		'body'  => 'Once the right match is made, we help bring the client and the selected talent together and support the setup from there.',
+	),
+);
+?>
+<section class="relative flex min-h-[78svh] items-end overflow-hidden bg-brand-navy text-white">
+	<?php voigue_photo( 'about_hero', 'absolute inset-0', 'People photo', 'The Voigue team' ); ?>
+	<div class="absolute inset-0 bg-[linear-gradient(to_top,rgba(12,6,34,0.85),rgba(12,6,34,0.15)_70%)]"></div>
+	<div class="container-x relative pb-14 pt-36 lg:pb-20">
+		<div class="max-w-3xl animate-[fadeIn_700ms_ease-out]">
+			<h1 class="text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">Connecting people to what comes next.</h1>
+			<p class="mt-6 text-lg text-white/85 sm:text-xl">Bringing international opportunity within reach.</p>
+		</div>
+	</div>
+</section>
+
+<section class="bg-white py-20 lg:py-28">
+	<div class="container-x">
+		<div class="reveal mx-auto max-w-3xl text-center">
+			<p class="text-[11px] font-semibold uppercase tracking-[0.32em] text-muted">Who We Are</p>
+			<div class="mx-auto mt-4 h-0.5 w-8 bg-brand-violet" aria-hidden="true"></div>
+			<p class="mt-8 text-lg leading-9 text-muted sm:text-xl">Voigue is an Australian-based outsourcing company with offices in Melbourne, Australia and Colombo, Sri Lanka. Founded in 2017, we started with a simple idea: connect great people with businesses they can grow with. Since then, the team has grown, the work has expanded, and so have the opportunities we create. Today, we support Australian businesses beyond Australia by building dedicated teams around the people and skills they need, while opening the door to international careers for talent in Sri Lanka.</p>
+		</div>
+	</div>
+</section>
+
+<section class="bg-paper py-20 lg:py-28">
+	<div class="container-x">
+		<div class="reveal text-center">
+			<p class="text-[11px] font-semibold uppercase tracking-[0.32em] text-muted">How It Works</p>
+			<div class="mx-auto mt-4 h-0.5 w-8 bg-brand-violet" aria-hidden="true"></div>
+		</div>
+		<div class="mt-14 grid gap-12 md:grid-cols-3 md:gap-8">
+			<?php foreach ( $voigue_steps as $voigue_index => $voigue_step ) : ?>
+				<div class="reveal relative text-center" style="--delay: <?php echo esc_attr( (string) ( $voigue_index * 0.12 ) ); ?>s">
+					<span class="mx-auto flex h-28 w-28 items-center justify-center rounded-3xl bg-lilac text-brand-violet">
+						<?php echo voigue_icon( $voigue_step['icon'], 'h-10 w-10' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG markup. ?>
+					</span>
+					<?php if ( $voigue_index < count( $voigue_steps ) - 1 ) : ?>
+						<span aria-hidden="true" class="absolute left-[calc(50%+4.5rem)] right-[calc(-50%+4.5rem)] top-14 hidden h-px bg-line md:block"></span>
+					<?php endif; ?>
+					<span class="mx-auto mt-6 flex h-8 w-8 items-center justify-center rounded-full bg-lilac-deep text-xs font-semibold text-brand-violet"><?php echo esc_html( str_pad( (string) ( $voigue_index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+					<h3 class="mt-4 text-xl font-semibold text-ink"><?php echo esc_html( $voigue_step['title'] ); ?></h3>
+					<p class="mt-3 leading-7 text-muted"><?php echo esc_html( $voigue_step['body'] ); ?></p>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+
+<section class="bg-white py-20 lg:py-28">
+	<div class="container-x">
+		<h2 class="reveal text-center text-4xl font-semibold tracking-tight text-ink sm:text-5xl">Our Mission &amp; Vision</h2>
+		<div class="mx-auto mt-14 grid max-w-4xl gap-6 md:gap-10">
+			<div class="reveal" data-reveal="left">
+				<div class="grid items-center md:grid-cols-[0.8fr_1.4fr]">
+					<div class="flex h-44 items-center justify-center rounded-3xl bg-brand-violet text-2xl font-semibold text-white md:h-52">Mission</div>
+					<p class="relative rounded-2xl bg-white p-7 text-lg leading-8 text-muted shadow-soft md:-ml-10 md:mt-10">To connect businesses with handpicked talent and create partnerships where people feel valued, businesses feel supported, and growth happens on both sides.</p>
+				</div>
+			</div>
+			<div class="reveal" data-reveal="right">
+				<div class="grid items-center md:grid-cols-[1.4fr_0.8fr]">
+					<p class="relative order-2 rounded-2xl bg-white p-7 text-lg leading-8 text-muted shadow-soft md:order-1 md:z-10 md:-mr-10 md:mb-10">To make international careers more accessible to Sri Lankan talent and create a future where opportunity isn&rsquo;t limited by where you&rsquo;re based.</p>
+					<div class="order-1 flex h-44 items-center justify-center rounded-3xl bg-brand-navy text-2xl font-semibold text-white md:order-2 md:h-52">Vision</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="bg-white pb-20 lg:pb-28">
+	<div class="container-x">
+		<div class="reveal grid items-center gap-10 rounded-[2rem] bg-lilac p-8 sm:p-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+			<div>
+				<p class="text-[11px] font-semibold uppercase tracking-[0.32em] text-brand-violet">The Future of Work</p>
+				<h2 class="mt-4 text-4xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl">Made for the <span class="text-brand-violet">next generation of work.</span></h2>
+				<p class="mt-6 text-lg leading-8 text-muted">The way people build careers is changing, and we want to be part of what comes next. Voigue creates international opportunities for ambitious talent in Sri Lanka while helping businesses build teams beyond borders. It is about giving people more access, more exposure and more room to grow in a working world that is becoming less defined by location.</p>
+			</div>
+			<?php voigue_photo( 'about_future', 'aspect-[4/3] w-full rounded-2xl', 'Image', 'Voigue team' ); ?>
+		</div>
+	</div>
+</section>
+<?php
+get_footer();

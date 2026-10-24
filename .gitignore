@@ -5,3 +5,6 @@ qa-screenshots/
 *.tsbuildinfo
 .env*
 !.env.example
+
+# WordPress build output
+wordpress/dist/
