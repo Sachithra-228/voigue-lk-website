@@ -46,6 +46,11 @@ Nothing is hard-coded. Every slot lives in `voigue-core/includes/defaults.php` (
 
 > The local test site (`npm run wp:dev`) is not an Apache server, so it deliberately reports "Fix this" for CV storage. That is the check working as intended.
 
+## Building and installing
+
+- `npm run wp:zip` rebuilds the CSS and writes `wordpress/dist/voigue-theme.zip` and `wordpress/dist/voigue-core.zip` (the `dist` folder is git-ignored).
+- Guides for the client: [Install guide](docs/INSTALL.md), [Go-live checklist](docs/GO-LIVE-CHECKLIST.md) and [Talent Acquisition guide](docs/TALENT-ACQUISITION-GUIDE.md).
+
 ## The Talent Acquisition team
 
 For recruiters who should not touch the rest of the website, the plugin adds a **Talent Acquisition** role.

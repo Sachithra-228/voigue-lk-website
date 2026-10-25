@@ -11,6 +11,7 @@
     "admin:set": "node scripts/set-admin.mjs",
     "wp:css": "tailwindcss -c wordpress/tailwind.config.js -i wordpress/voigue-theme/src/input.css -o wordpress/voigue-theme/assets/css/main.css --minify",
     "wp:css:watch": "tailwindcss -c wordpress/tailwind.config.js -i wordpress/voigue-theme/src/input.css -o wordpress/voigue-theme/assets/css/main.css --watch",
+    "wp:zip": "npm run wp:css && powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-wordpress.ps1",
     "wp:dev": "npx @wp-playground/cli@latest server --port=9400 --blueprint=wordpress/dev/blueprint.json --mount=./wordpress/voigue-theme:/wordpress/wp-content/themes/voigue-theme --mount=./wordpress/voigue-core:/wordpress/wp-content/plugins/voigue-core"
   },
   "dependencies": {

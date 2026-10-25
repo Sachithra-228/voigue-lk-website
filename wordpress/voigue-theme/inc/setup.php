@@ -109,6 +109,16 @@ function voigue_theme_activate() {
 		$existing = get_page_by_path( $slug );
 		if ( $existing ) {
 			$ids[ $slug ] = (int) $existing->ID;
+			// WordPress ships an unpublished "Privacy Policy" draft full of generic template text. Swap it for the placeholder and publish it so the footer link works.
+			if ( 'privacy-policy' === $slug && 'draft' === $existing->post_status && (int) get_option( 'wp_page_for_privacy_policy' ) === (int) $existing->ID ) {
+				wp_update_post(
+					array(
+						'ID'           => $existing->ID,
+						'post_status'  => 'publish',
+						'post_content' => voigue_default_page_content( $slug ),
+					)
+				);
+			}
 			continue;
 		}
 		$page_id = wp_insert_post(
