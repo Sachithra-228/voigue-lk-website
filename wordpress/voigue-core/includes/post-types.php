@@ -47,7 +47,8 @@ function voigue_register_post_types() {
 			'supports'           => array( 'title', 'editor', 'page-attributes' ),
 			'has_archive'        => false,
 			'rewrite'            => false,
-			'capability_type'    => 'post',
+			'capability_type'    => array( 'voigue_job', 'voigue_jobs' ),
+			'map_meta_cap'       => true,
 		)
 	);
 }

@@ -32,6 +32,11 @@
   --lilac-deep: 262 58% 89%;
 }
 
+/* An element marked [hidden] must stay hidden even when a layout class such as .grid or .flex is on it. */
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
@@ -263,6 +268,46 @@ body {
   }
   .form-input {
     @apply focus-ring w-full rounded-xl border border-line bg-white px-4 py-3 text-sm font-normal text-ink transition focus:border-brand-violet;
+  }
+
+  /* ---------- Careers: vacancy board ---------- */
+  .job-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  .job-panel.is-open {
+    grid-template-rows: 1fr;
+  }
+  .job-panel > div {
+    overflow: hidden;
+  }
+  .job-toggle.is-open .job-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* ---------- Careers: apply window ---------- */
+  .cv-modal {
+    @apply fixed inset-0 z-[60] flex items-end justify-center sm:items-center sm:p-6;
+  }
+  .cv-modal[hidden] {
+    display: none;
+  }
+  .cv-modal-backdrop {
+    @apply absolute inset-0 bg-ink/60 backdrop-blur-sm;
+  }
+  .cv-modal-dialog {
+    @apply relative max-h-[92svh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-white p-6 shadow-2xl outline-none sm:rounded-3xl sm:p-8;
+    animation: fadeIn 0.25s ease-out;
+  }
+  .cv-modal-x {
+    @apply absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full text-muted transition hover:bg-lilac hover:text-ink;
+  }
+  .cv-dropzone {
+    @apply flex min-h-24 cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-line px-4 py-5 transition hover:border-brand-violet hover:bg-lilac/50;
+  }
+  .cv-dropzone.is-dragging {
+    @apply border-brand-violet bg-lilac;
   }
 
   /* ---------- Filter chips ---------- */

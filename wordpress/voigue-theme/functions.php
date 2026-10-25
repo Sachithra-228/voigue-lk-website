@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'VOIGUE_THEME_VERSION', '0.2.0' );
+define( 'VOIGUE_THEME_VERSION', '0.3.0' );
 define( 'VOIGUE_THEME_DIR', get_template_directory() );
 define( 'VOIGUE_THEME_URI', get_template_directory_uri() );
 

@@ -31,3 +31,28 @@ Activating the theme runs `voigue_theme_activate()` (in `voigue-theme/inc/setup.
 ## Photos and videos
 
 Nothing is hard-coded. Every slot lives in `voigue-core/includes/defaults.php` (`voigue_media_slots()`) and is filled in under **Voigue > Site settings**. An empty slot shows a neutral placeholder.
+
+## Applications and candidates' CVs
+
+- Candidates apply from the Careers page (a listed role, or "Send your CV"). Each submission becomes an entry under **Applications** in the admin, with a review status (New, Reviewing, Shortlisted, Interview, Rejected, Hired), and an email alert goes to the careers address in **Voigue > Site settings**.
+- **CVs are private.** They are stored in a folder that the website cannot serve, under random file names, and can only be downloaded from the admin by a signed-in user (the link is signed and expires with the session). Deleting an application deletes its CV file.
+- Where the folder lives, in order of preference:
+  1. `VOIGUE_PRIVATE_DIR` if you define it in `wp-config.php` (for example `/home/youraccount/voigue-private`, a folder above `public_html`).
+  2. A `voigue-private` folder next to the website's public folder, if the host allows writing there.
+  3. `wp-content/uploads/voigue-private`, protected by an `.htaccess` rule. This works on Apache and LiteSpeed hosts such as Bluehost, but NOT on every server.
+- **Before going live, open Voigue > Health check.** "CV storage" must say OK. If it says "Fix this", files in the CV folder can be opened from the internet; set `VOIGUE_PRIVATE_DIR` to a folder above the public one.
+- Accepted files: PDF, DOC, DOCX up to 4 MB, checked by their real contents (not just the file name). The server's PHP upload limit must be at least 5 MB (also shown on the Health check page).
+- Spam protection: a hidden bot trap, a minimum-time check and a limit of 5 applications per visitor per hour.
+
+> The local test site (`npm run wp:dev`) is not an Apache server, so it deliberately reports "Fix this" for CV storage. That is the check working as intended.
+
+## The Talent Acquisition team
+
+For recruiters who should not touch the rest of the website, the plugin adds a **Talent Acquisition** role.
+
+- **Create a user:** Users > Add New, set Role to "Talent Acquisition".
+- **They can:** review applications (change status one by one or in bulk, download CVs, delete), read contact messages, add/edit/publish vacancies, manage Employee Voices, and add gallery photos (choosing from existing categories).
+- **They cannot:** edit pages, posts, the theme, plugins, users, Site settings or the Health check, or create new gallery categories. Applications and messages cannot be added by hand; they only come from the website's forms.
+- After signing in they land on the Applications list, and their dashboard shows a "Voigue at a glance" summary (new applications, open vacancies, messages) instead of the default WordPress widgets.
+- The permissions are created when the plugin is activated or updated. Administrators keep full access.
+- The local test site (`npm run wp:dev`) includes a sample TA account (`ta_user`) for trying this out; it exists only in that throw-away site.

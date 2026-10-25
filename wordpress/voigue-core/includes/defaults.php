@@ -74,6 +74,26 @@ function voigue_media_slots() {
 			'type'  => 'image',
 			'group' => 'Home page',
 		),
+		'careers_hero'     => array(
+			'label' => 'Careers hero: full-width photo',
+			'type'  => 'image',
+			'group' => 'Careers page',
+		),
+		'careers_remote'   => array(
+			'label' => 'Work Your Way: Remote photo',
+			'type'  => 'image',
+			'group' => 'Careers page',
+		),
+		'careers_hybrid'   => array(
+			'label' => 'Work Your Way: Hybrid photo',
+			'type'  => 'image',
+			'group' => 'Careers page',
+		),
+		'careers_onsite'   => array(
+			'label' => 'Work Your Way: On-site photo',
+			'type'  => 'image',
+			'group' => 'Careers page',
+		),
 		'about_hero'       => array(
 			'label' => 'About hero: full-width people photo',
 			'type'  => 'image',

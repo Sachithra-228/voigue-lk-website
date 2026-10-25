@@ -1,15 +1,31 @@
 {
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
   "landingPage": "/",
-  "preferredVersions": { "php": "8.3", "wp": "latest" },
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
   "login": true,
   "steps": [
-    { "step": "defineWpConfigConsts", "consts": { "WP_DEBUG": true, "WP_DEBUG_DISPLAY": true } },
-    { "step": "activatePlugin", "pluginPath": "voigue-core/voigue-core.php" },
-    { "step": "activateTheme", "themeFolderName": "voigue-theme" },
+    {
+      "step": "defineWpConfigConsts",
+      "consts": {
+        "WP_DEBUG": true,
+        "WP_DEBUG_DISPLAY": true,
+        "VOIGUE_PRIVATE_DIR": "/wordpress/wp-content/uploads/voigue-private"
+      }
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "voigue-core/voigue-core.php"
+    },
+    {
+      "step": "activateTheme",
+      "themeFolderName": "voigue-theme"
+    },
     {
       "step": "runPHP",
-      "code": "<?php require_once '/wordpress/wp-load.php'; voigue_create_demo_jobs(); voigue_create_demo_voices(); voigue_create_demo_moments(); wp_insert_post( array( 'post_type' => 'post', 'post_status' => 'publish', 'post_title' => 'How we think about building global teams', 'post_content' => \"<p>This is a sample article used to preview the blog design.</p><h2>A heading inside an article</h2><p>Body text continues here, with a <a href='#'>link</a>.</p><ul><li>First point</li><li>Second point</li></ul><blockquote>A short quote.</blockquote>\", 'post_excerpt' => 'A sample article used to preview the blog design.' ) ); wp_insert_post( array( 'post_type' => 'post', 'post_status' => 'publish', 'post_title' => 'Building better cross-border teams', 'post_content' => '<p>Another sample article.</p>' ) );"
+      "code": "<?php require_once '/wordpress/wp-load.php'; voigue_create_demo_jobs(); voigue_create_demo_voices(); voigue_create_demo_moments(); wp_insert_post( array( 'post_type' => 'post', 'post_status' => 'publish', 'post_title' => 'How we think about building global teams', 'post_content' => \"<p>This is a sample article used to preview the blog design.</p><h2>A heading inside an article</h2><p>Body text continues here, with a <a href='#'>link</a>.</p><ul><li>First point</li><li>Second point</li></ul><blockquote>A short quote.</blockquote>\", 'post_excerpt' => 'A sample article used to preview the blog design.' ) ); wp_insert_post( array( 'post_type' => 'post', 'post_status' => 'publish', 'post_title' => 'Building better cross-border teams', 'post_content' => '<p>Another sample article.</p>' ) ); wp_insert_user( array( 'user_login' => 'ta_user', 'user_pass' => 'ta-test-pass', 'user_email' => 'ta@example.com', 'role' => 'voigue_ta' ) );"
     }
   ]
 }

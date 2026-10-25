@@ -44,6 +44,9 @@ function voigue_health_checks() {
 
 	$add( 'HTTPS', is_ssl() ? 'ok' : 'warn', is_ssl() ? 'The site is served over HTTPS.' : 'The site is not on HTTPS. Candidates upload CVs, so HTTPS is required on the live site.' );
 
+	$cv_check = voigue_cv_storage_check();
+	$add( 'CV storage', $cv_check['status'], $cv_check['detail'] );
+
 	$count = wp_count_posts( VOIGUE_JOB_TYPE );
 	$live  = isset( $count->publish ) ? (int) $count->publish : 0;
 	$add( 'Published vacancies', $live > 0 ? 'ok' : 'warn', $live . ' published. The Careers section shows a friendly message when there are none.' );
@@ -137,4 +140,49 @@ function voigue_render_health_page() {
 		</form>
 	</div>
 	<?php
+}
+
+/**
+ * Where CVs are stored, and whether that folder is really closed to the public.
+ *
+ * @return array{status:string,detail:string}
+ */
+function voigue_cv_storage_check() {
+	$dir = voigue_private_dir();
+	if ( ! wp_is_writable( $dir . '/cvs' ) ) {
+		return array(
+			'status' => 'bad',
+			'detail' => 'The CV folder is not writable, so applications cannot be saved: ' . $dir,
+		);
+	}
+	if ( 'outside' === voigue_private_dir_mode() ) {
+		return array(
+			'status' => 'ok',
+			'detail' => 'CVs are stored outside the public website folder, so they cannot be opened by a web address.',
+		);
+	}
+
+	// Inside uploads: prove the protection works by trying to fetch a test file over the web.
+	$uploads = wp_upload_dir();
+	$test    = $dir . '/healthcheck.txt';
+	file_put_contents( $test, 'private' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
+	$response = wp_remote_get( trailingslashit( $uploads['baseurl'] ) . 'voigue-private/healthcheck.txt', array( 'timeout' => 8, 'sslverify' => false ) );
+	wp_delete_file( $test );
+
+	if ( is_wp_error( $response ) ) {
+		return array(
+			'status' => 'warn',
+			'detail' => 'CVs are stored inside the uploads folder, protected by an .htaccess rule. The automatic test could not run here, so please check by hand that ' . trailingslashit( $uploads['baseurl'] ) . 'voigue-private/cvs/ is not reachable. Better: ask the host for a folder above the public one and set VOIGUE_PRIVATE_DIR in wp-config.php.',
+		);
+	}
+	if ( 200 === (int) wp_remote_retrieve_response_code( $response ) && 'private' === trim( wp_remote_retrieve_body( $response ) ) ) {
+		return array(
+			'status' => 'bad',
+			'detail' => 'WARNING: files in the CV folder can be opened from the internet. Ask the host to enable .htaccess rules, or set VOIGUE_PRIVATE_DIR in wp-config.php to a folder above the public one.',
+		);
+	}
+	return array(
+		'status' => 'ok',
+		'detail' => 'CVs are stored inside the uploads folder, and a test confirmed they cannot be opened from the internet.',
+	);
 }

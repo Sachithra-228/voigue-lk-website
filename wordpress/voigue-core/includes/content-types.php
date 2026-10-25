@@ -40,7 +40,8 @@ function voigue_register_content_types() {
 			'menu_icon'       => 'dashicons-format-quote',
 			'supports'        => array( 'title', 'thumbnail', 'page-attributes' ),
 			'rewrite'         => false,
-			'capability_type' => 'post',
+			'capability_type' => array( 'voigue_voice', 'voigue_voices' ),
+			'map_meta_cap'    => true,
 		)
 	);
 
@@ -71,7 +72,8 @@ function voigue_register_content_types() {
 			'menu_icon'       => 'dashicons-format-gallery',
 			'supports'        => array( 'title', 'thumbnail', 'page-attributes' ),
 			'rewrite'         => false,
-			'capability_type' => 'post',
+			'capability_type' => array( 'voigue_moment', 'voigue_moments' ),
+			'map_meta_cap'    => true,
 		)
 	);
 
@@ -91,6 +93,13 @@ function voigue_register_content_types() {
 			'show_admin_column' => true,
 			'show_in_rest'      => false,
 			'rewrite'           => false,
+			// Only administrators create or rename categories; the Talent Acquisition team can choose one for a photo.
+			'capabilities'      => array(
+				'manage_terms' => 'manage_categories',
+				'edit_terms'   => 'manage_categories',
+				'delete_terms' => 'manage_categories',
+				'assign_terms' => 'edit_voigue_moments',
+			),
 		)
 	);
 
@@ -115,8 +124,8 @@ function voigue_register_content_types() {
 			'menu_icon'       => 'dashicons-email-alt',
 			'supports'        => array( 'title' ),
 			'rewrite'         => false,
-			'capability_type' => 'post',
-			'capabilities'    => array( 'create_posts' => 'do_not_allow' ),
+			// The "Add new" screen is blocked in roles.php; keeping the permission lets WordPress build the admin menu correctly.
+			'capability_type' => array( 'voigue_message', 'voigue_messages' ),
 			'map_meta_cap'    => true,
 		)
 	);
