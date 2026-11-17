@@ -41,7 +41,7 @@ Then open **Voigue > Health check**. **CV storage must say OK.** If it says "Fix
 ## 3. Fill in the site
 
 - **Voigue > Site settings**: contact emails, phone numbers, addresses, social links, map addresses, and every photo and video slot (including the Life at Voigue promotional video, uploaded as an MP4). An empty slot shows a neutral placeholder, so the site is always presentable.
-- **Pages > Privacy Policy / Terms of Use**: contain a placeholder. Replace with Voigue's approved legal text before launch.
+- **Pages > Privacy Policy / Terms of Use**: contain a placeholder. Replace with Voigue's approved legal text before launch. Drafts are in `docs/legal/`: once Voigue has approved the Word review copy and every highlighted point is filled in, open the page, switch the editor to **Code editor** (top-right menu), paste the matching `.html` file, update the yellow `<mark>` parts with the approved wording, and Update.
 - **Vacancies, Employee Voices, Life around here**: add real content (see the Talent Acquisition guide).
 
 To preview the site with sample content, open **Voigue > Health check** and use the demo-content buttons. Use the same page to remove the sample content again before launch.

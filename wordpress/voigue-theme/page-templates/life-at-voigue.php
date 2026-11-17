@@ -27,6 +27,8 @@ $voigue_poster = voigue_media_url( 'life_hero_poster' );
 				<img class="absolute inset-0 h-full w-full object-cover" src="<?php echo esc_url( $voigue_poster ); ?>" alt="" decoding="async">
 			<?php endif; ?>
 			<video class="absolute inset-0 h-full w-full object-cover motion-reduce:hidden" src="<?php echo esc_url( $voigue_video ); ?>" <?php echo $voigue_poster ? 'poster="' . esc_url( $voigue_poster ) . '"' : ''; ?> autoplay loop muted playsinline preload="auto"></video>
+		<?php elseif ( $voigue_poster ) : ?>
+			<img class="absolute inset-0 h-full w-full object-cover" src="<?php echo esc_url( $voigue_poster ); ?>" alt="" decoding="async" fetchpriority="high">
 		<?php else : ?>
 			<div class="hero-placeholder absolute inset-0"></div>
 		<?php endif; ?>
