@@ -12,7 +12,7 @@ The theme needs the plugin. Install and activate both.
 ## Requirements
 
 - WordPress 6.2 or newer, PHP 8.0 or newer (8.1+ recommended), HTTPS enabled.
-- PHP upload limit of at least 5 MB (`upload_max_filesize` and `post_max_size`). In Bluehost: cPanel > MultiPHP INI Editor.
+- PHP upload limit of at least 5 MB for CVs (`upload_max_filesize` and `post_max_size`). To upload the promotional video through WordPress, raise both to a little more than the video file size (for example 128M). In Bluehost: cPanel > MultiPHP INI Editor.
 - The ability to send email (see "Email" below).
 
 ## 1. Install
@@ -40,7 +40,7 @@ Then open **Voigue > Health check**. **CV storage must say OK.** If it says "Fix
 
 ## 3. Fill in the site
 
-- **Voigue > Site settings**: contact emails, phone numbers, addresses, social links, map addresses, the Life at Voigue YouTube link, and every photo and video slot. An empty slot shows a neutral placeholder, so the site is always presentable.
+- **Voigue > Site settings**: contact emails, phone numbers, addresses, social links, map addresses, and every photo and video slot (including the Life at Voigue promotional video, uploaded as an MP4). An empty slot shows a neutral placeholder, so the site is always presentable.
 - **Pages > Privacy Policy / Terms of Use**: contain a placeholder. Replace with Voigue's approved legal text before launch.
 - **Vacancies, Employee Voices, Life around here**: add real content (see the Talent Acquisition guide).
 

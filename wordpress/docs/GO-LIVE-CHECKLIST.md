@@ -33,7 +33,7 @@ Work through this top to bottom on the live site. Tick each item.
 - [ ] All photo and video slots in Site settings filled (or intentionally left as placeholders).
 - [ ] Phone numbers, addresses, social links, map addresses checked.
 - [ ] Privacy Policy and Terms of Use contain the approved text (not the placeholder).
-- [ ] Life at Voigue YouTube link set, employee voices and gallery photos added.
+- [ ] Life at Voigue promotional video (MP4) and its cover image uploaded, 4 employee voices and gallery photos (Parties, Community) added.
 - [ ] Menus show the right pages; footer links work.
 
 ## Quality

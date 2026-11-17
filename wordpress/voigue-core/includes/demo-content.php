@@ -106,7 +106,7 @@ function voigue_create_demo_jobs() {
  */
 function voigue_create_demo_voices() {
 	$created = 0;
-	for ( $i = 0; $i < 5; $i++ ) {
+	for ( $i = 0; $i < 4; $i++ ) {
 		$post_id = wp_insert_post(
 			array(
 				'post_type'   => VOIGUE_VOICE_TYPE,
@@ -135,10 +135,10 @@ function voigue_create_demo_moments() {
 	$items   = array(
 		array( 'Team celebration', 'Parties' ),
 		array( 'Community day', 'Community' ),
-		array( 'Annual event', 'Events' ),
+		array( 'Annual celebration', 'Parties' ),
 		array( 'Year-end party', 'Parties' ),
 		array( 'Giving back', 'Community' ),
-		array( 'Company offsite', 'Events' ),
+		array( 'Team outing', 'Community' ),
 		array( 'Festive get-together', 'Parties' ),
 		array( 'Volunteer day', 'Community' ),
 	);

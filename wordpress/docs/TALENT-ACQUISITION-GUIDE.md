@@ -34,7 +34,7 @@ To close a vacancy, switch it to **Draft** or move it to Trash. Applications alr
 ## Employee Voices and Life around here
 
 - **Employee Voices**: quotes and photos of team members shown on the Life at Voigue page. Add a voice with the person's name as the title, then their role and testimonial under **Employee details**, and a photo with **Set featured image**.
-- **Life around here**: gallery photos. Add a title and photo (use **Set featured image**) and choose a category (Community, Events, Parties). You can choose from the existing categories; only an administrator can add new ones.
+- **Life around here**: gallery photos. Add a title and photo (use **Set featured image**) and choose a category (Community or Parties). You can choose from the existing categories; only an administrator can add new ones.
 - Photos: use JPG/PNG, landscape, 1600 px wide is plenty; keep each under about 500 KB.
 
 ## Media

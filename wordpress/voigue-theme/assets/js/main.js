@@ -223,24 +223,6 @@
 		} );
 	} );
 
-	/* ---------- Promotional video: loads YouTube only when the visitor presses play ---------- */
-	document.querySelectorAll( '[data-youtube]' ).forEach( function ( box ) {
-		var id = box.getAttribute( 'data-video-id' );
-		var button = box.querySelector( '.youtube-play' );
-		if ( ! id || ! button ) {
-			return;
-		}
-		button.addEventListener( 'click', function () {
-			var frame = document.createElement( 'iframe' );
-			frame.className = 'absolute inset-0 h-full w-full';
-			frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent( id ) + '?autoplay=1&rel=0';
-			frame.title = 'Voigue promotional video';
-			frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-			frame.allowFullscreen = true;
-			box.replaceChildren( frame );
-		} );
-	} );
-
 	/* ---------- Contact form ---------- */
 	var contactForm = document.querySelector( '[data-contact-form]' );
 	if ( contactForm && window.voigueTheme ) {

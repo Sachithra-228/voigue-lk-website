@@ -133,13 +133,13 @@ function voigue_register_content_types() {
 add_action( 'init', 'voigue_register_content_types' );
 
 /**
- * Makes sure the three gallery categories exist (once).
+ * Makes sure the gallery categories (Parties, Community) exist (once).
  */
 function voigue_seed_moment_terms() {
 	if ( get_option( 'voigue_moment_terms_seeded' ) || ! taxonomy_exists( VOIGUE_MOMENT_TAX ) ) {
 		return;
 	}
-	foreach ( array( 'Parties', 'Events', 'Community' ) as $name ) {
+	foreach ( array( 'Parties', 'Community' ) as $name ) {
 		if ( ! term_exists( $name, VOIGUE_MOMENT_TAX ) ) {
 			wp_insert_term( $name, VOIGUE_MOMENT_TAX );
 		}

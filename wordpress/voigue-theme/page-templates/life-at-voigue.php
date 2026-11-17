@@ -82,19 +82,21 @@ $voigue_poster = voigue_media_url( 'life_hero_poster' );
 			<h2 class="text-4xl font-semibold tracking-tight text-ink sm:text-5xl">Here&rsquo;s a little more of us.</h2>
 			<p class="mt-4 text-lg text-muted">A glimpse at the people, moments and energy behind Voigue.</p>
 		</div>
-		<?php $voigue_youtube = voigue_youtube_id( voigue_setting( 'life_youtube' ) ); ?>
-		<div class="reveal relative mt-12 aspect-video w-full overflow-hidden rounded-2xl bg-ink shadow-soft" data-youtube data-video-id="<?php echo esc_attr( $voigue_youtube ); ?>" style="--delay: 0.1s">
-			<button type="button" class="youtube-play focus-ring group absolute inset-0 flex items-center justify-center" <?php echo $voigue_youtube ? '' : 'disabled'; ?> aria-label="<?php echo esc_attr( $voigue_youtube ? 'Play video: Voigue promotional video' : 'Promotional video coming soon' ); ?>">
-				<?php if ( $voigue_youtube ) : ?>
-					<img class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" src="<?php echo esc_url( 'https://i.ytimg.com/vi/' . $voigue_youtube . '/hqdefault.jpg' ); ?>" alt="" loading="lazy" decoding="async">
-				<?php else : ?>
+		<?php
+		// The promotional video is uploaded to the media library (Voigue > Site settings) and played on the page itself.
+		$voigue_promo        = voigue_media_url( 'life_promo_video' );
+		$voigue_promo_poster = voigue_media_url( 'life_promo_poster' );
+		?>
+		<div class="reveal relative mt-12 aspect-video w-full overflow-hidden rounded-2xl bg-ink shadow-soft" style="--delay: 0.1s">
+			<?php if ( $voigue_promo ) : ?>
+				<video class="absolute inset-0 h-full w-full bg-ink" src="<?php echo esc_url( $voigue_promo ); ?>" <?php echo $voigue_promo_poster ? 'poster="' . esc_url( $voigue_promo_poster ) . '"' : ''; ?> controls playsinline preload="<?php echo $voigue_promo_poster ? 'none' : 'metadata'; ?>" aria-label="Voigue promotional video"></video>
+			<?php else : ?>
+				<div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
 					<span class="absolute inset-0 bg-[linear-gradient(135deg,hsl(278_50%_22%),hsl(262_45%_34%))]"></span>
-				<?php endif; ?>
-				<span class="relative inline-flex h-20 w-20 items-center justify-center rounded-full bg-white/95 text-brand-violet shadow-xl transition group-hover:scale-105"><?php echo voigue_icon( 'play', 'ml-1 h-7 w-7' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG markup. ?></span>
-				<?php if ( ! $voigue_youtube ) : ?>
+					<span class="relative inline-flex h-20 w-20 items-center justify-center rounded-full bg-white/95 text-brand-violet shadow-xl"><?php echo voigue_icon( 'play', 'ml-1 h-7 w-7' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG markup. ?></span>
 					<span class="absolute bottom-5 text-xs font-medium uppercase tracking-[0.2em] text-white/60">Promotional video placeholder</span>
-				<?php endif; ?>
-			</button>
+				</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </section>

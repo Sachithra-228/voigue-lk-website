@@ -26,7 +26,6 @@ function voigue_default_settings() {
 		'social_instagram' => 'https://www.instagram.com/voigue365?igsi=dDN4NGdtZm5semQ0',
 		'social_facebook'  => 'https://www.facebook.com/share/14nRE1USJ8Q/?mibextid=wwXIfr',
 		'social_tiktok'    => 'https://www.tiktok.com/@voigueptyltd?_r=1&_t=ZS-99TKd3EV1eB',
-		'life_youtube'     => '',
 		'map_lk'           => 'Orion City, Dr Danister De Silva Mawatha, Colombo 09, Sri Lanka',
 		'map_au'           => '470 St Kilda Road, Melbourne, VIC 3004, Australia',
 	);
@@ -126,6 +125,16 @@ function voigue_media_slots() {
 		),
 		'life_people_moment' => array(
 			'label' => 'People: culture moment',
+			'type'  => 'image',
+			'group' => 'Life at Voigue page',
+		),
+		'life_promo_video' => array(
+			'label' => 'Promotional video ("Here\'s a little more of us"), MP4',
+			'type'  => 'video',
+			'group' => 'Life at Voigue page',
+		),
+		'life_promo_poster' => array(
+			'label' => 'Promotional video cover image (shown before it plays)',
 			'type'  => 'image',
 			'group' => 'Life at Voigue page',
 		),

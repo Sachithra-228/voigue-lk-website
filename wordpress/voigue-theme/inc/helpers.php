@@ -26,7 +26,6 @@ function voigue_theme_defaults() {
 		'social_instagram' => 'https://www.instagram.com/voigue365?igsi=dDN4NGdtZm5semQ0',
 		'social_facebook'  => 'https://www.facebook.com/share/14nRE1USJ8Q/?mibextid=wwXIfr',
 		'social_tiktok'    => 'https://www.tiktok.com/@voigueptyltd?_r=1&_t=ZS-99TKd3EV1eB',
-		'life_youtube'     => '',
 		'map_lk'           => 'Orion City, Dr Danister De Silva Mawatha, Colombo 09, Sri Lanka',
 		'map_au'           => '470 St Kilda Road, Melbourne, VIC 3004, Australia',
 	);
@@ -119,20 +118,6 @@ function voigue_render_photo( $id, $class = '', $label = '', $alt = '', $size = 
 		echo '<span class="px-3 text-center text-xs font-medium uppercase tracking-[0.18em]">' . esc_html( $label ) . '</span>';
 	}
 	echo '</div>';
-}
-
-/**
- * Pulls a YouTube video ID out of a link (or accepts a bare ID). Returns an empty string if it does not look valid.
- *
- * @param string $value A YouTube link or ID.
- * @return string
- */
-function voigue_youtube_id( $value ) {
-	$value = trim( (string) $value );
-	if ( preg_match( '#(?:youtu\.be/|youtube\.com/(?:watch\?(?:.*&)?v=|embed/|shorts/|live/))([A-Za-z0-9_-]{11})#', $value, $m ) ) {
-		return $m[1];
-	}
-	return preg_match( '/^[A-Za-z0-9_-]{11}$/', $value ) ? $value : '';
 }
 
 /**

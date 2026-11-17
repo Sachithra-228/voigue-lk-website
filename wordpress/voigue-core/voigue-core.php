@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Voigue Core
  * Description:       Vacancies, applications, site settings and admin tools for the Voigue.lk website. Keep this plugin active: it holds the site's data, so switching the theme never loses it.
- * Version:           0.4.0
+ * Version:           0.5.0
  * Requires at least: 6.2
  * Requires PHP:      8.0
  * Author:            Voigue
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'VOIGUE_CORE_VERSION', '0.4.0' );
+define( 'VOIGUE_CORE_VERSION', '0.5.0' );
 define( 'VOIGUE_CORE_FILE', __FILE__ );
 define( 'VOIGUE_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'VOIGUE_CORE_URL', plugin_dir_url( __FILE__ ) );

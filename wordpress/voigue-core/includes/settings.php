@@ -72,10 +72,6 @@ function voigue_settings_fields() {
 			'label' => 'Australia map: what to search for',
 			'kind'  => 'text',
 		),
-		'life_youtube'     => array(
-			'label' => 'YouTube link for the full promotional video (Life at Voigue page)',
-			'kind'  => 'text',
-		),
 	);
 }
 
@@ -182,7 +178,7 @@ function voigue_render_settings_page() {
 			</table>
 
 			<h2>Photos and videos</h2>
-			<p class="description">Click <strong>Choose</strong> to pick a file from the media library or upload a new one. Videos: MP4, ideally under 20&nbsp;MB.</p>
+			<p class="description">Click <strong>Choose</strong> to pick a file from the media library or upload a new one. Videos: MP4. Keep the hero video under 20&nbsp;MB; the promotional video can be larger if the hosting upload limit allows it (see Voigue &gt; Health check).</p>
 			<?php foreach ( $groups as $group => $slots ) : ?>
 				<h3><?php echo esc_html( $group ); ?></h3>
 				<table class="form-table" role="presentation">

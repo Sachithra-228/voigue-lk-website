@@ -30,7 +30,7 @@ $voigue_terms = get_terms(
 		'hide_empty' => true,
 	)
 );
-$voigue_order = array( 'parties' => 0, 'events' => 1, 'community' => 2 );
+$voigue_order = array( 'parties' => 0, 'community' => 1 );
 if ( is_array( $voigue_terms ) ) {
 	usort(
 		$voigue_terms,
@@ -46,7 +46,7 @@ if ( is_array( $voigue_terms ) ) {
 	<div class="container-x">
 		<div class="reveal max-w-3xl">
 			<h2 class="text-5xl font-semibold leading-none tracking-tight text-ink sm:text-6xl lg:text-7xl">Life around here.</h2>
-			<p class="mt-6 text-lg leading-8 text-muted">Parties, events, community days, plans that make it out of the group chat and plenty we probably have too many photos of by now.</p>
+			<p class="mt-6 text-lg leading-8 text-muted">Parties, community days, plans that make it out of the group chat and plenty we probably have too many photos of by now.</p>
 		</div>
 
 		<div class="mt-12 md:px-6">
