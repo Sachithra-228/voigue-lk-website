@@ -8,3 +8,6 @@ qa-screenshots/
 
 # WordPress build output
 wordpress/dist/
+
+# Client photos and videos (large, uploaded through WordPress, not stored in git)
+client-assets/
