@@ -103,6 +103,11 @@ function voigue_media_slots() {
 			'type'  => 'image',
 			'group' => 'About Us page',
 		),
+		'contact_hero'     => array(
+			'label' => 'Contact hero: full-width photo',
+			'type'  => 'image',
+			'group' => 'Contact Us page',
+		),
 		'life_hero_video'  => array(
 			'label' => 'Hero video',
 			'type'  => 'video',

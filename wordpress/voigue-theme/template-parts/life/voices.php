@@ -37,7 +37,7 @@ if ( ! $voigue_voices->have_posts() ) {
 						$voigue_quote = (string) get_post_meta( get_the_ID(), '_voigue_quote', true );
 						?>
 						<figure class="w-[78%] shrink-0 snap-start sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-							<?php voigue_render_photo( (int) get_post_thumbnail_id(), 'aspect-[4/5] w-full rounded-2xl', 'Portrait', get_the_title() ); ?>
+							<?php voigue_render_photo( (int) get_post_thumbnail_id(), 'aspect-[4/5] w-full rounded-2xl', 'Portrait', get_the_title(), 'large', 'object-top' ); ?>
 							<figcaption class="mt-5">
 								<p class="text-lg font-semibold text-ink"><?php the_title(); ?></p>
 								<p class="text-sm text-muted"><?php echo esc_html( $voigue_role ); ?></p>

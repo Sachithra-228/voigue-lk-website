@@ -84,8 +84,9 @@ function voigue_photo( $key, $class = '', $label = '', $alt = '' ) {
  * @param string $label Short label shown inside the placeholder.
  * @param string $alt   Alt text for a real photo.
  * @param string $size  Image size to use.
+ * @param string $focus Tailwind object-position class: which part of the photo stays visible when it is cropped.
  */
-function voigue_render_photo( $id, $class = '', $label = '', $alt = '', $size = 'large' ) {
+function voigue_render_photo( $id, $class = '', $label = '', $alt = '', $size = 'large', $focus = 'object-center' ) {
 	// A photo that fills its parent ("absolute ...") is a background: it must not also be "relative".
 	$is_background = false !== strpos( $class, 'absolute' );
 	$position      = $is_background ? '' : 'relative ';
@@ -97,7 +98,7 @@ function voigue_render_photo( $id, $class = '', $label = '', $alt = '', $size = 
 			$size,
 			false,
 			array(
-				'class'    => 'absolute inset-0 h-full w-full object-cover',
+				'class'    => 'absolute inset-0 h-full w-full object-cover ' . $focus,
 				'alt'      => $alt,
 				'loading'  => 'lazy',
 				'decoding' => 'async',
@@ -177,7 +178,8 @@ function voigue_icon( $name, $class = 'h-5 w-5' ) {
  * @return bool
  */
 function voigue_has_dark_hero() {
-	return is_front_page() || is_page( array( 'about-us', 'life-at-voigue', 'careers' ) );
+	// The Contact page only has a dark photo hero once its photo has been chosen in Site settings.
+	return is_front_page() || is_page( array( 'about-us', 'life-at-voigue', 'careers' ) ) || ( is_page( 'contact-us' ) && '' !== voigue_media_url( 'contact_hero' ) );
 }
 
 /**

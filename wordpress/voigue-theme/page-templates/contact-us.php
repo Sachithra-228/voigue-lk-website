@@ -24,11 +24,22 @@ $voigue_offices = array(
 );
 $voigue_about = get_page_by_path( 'about-us' );
 ?>
+<?php $voigue_hero_photo = voigue_media_url( 'contact_hero' ); ?>
+<?php if ( $voigue_hero_photo ) : ?>
+<section class="relative flex min-h-[60svh] items-center justify-center overflow-hidden bg-brand-navy text-center text-white">
+	<img class="absolute inset-0 h-full w-full object-cover" src="<?php echo esc_url( $voigue_hero_photo ); ?>" alt="" decoding="async" fetchpriority="high">
+	<div class="absolute inset-0 bg-ink/45" aria-hidden="true"></div>
+	<div class="container-x relative pb-12 pt-36">
+		<h1 class="mx-auto max-w-3xl animate-[fadeIn_700ms_ease-out] text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">Got something in mind? Talk to us.</h1>
+	</div>
+</section>
+<?php else : ?>
 <section class="bg-[linear-gradient(135deg,hsl(var(--lilac)),hsl(var(--lilac-deep)))] pb-16 pt-36 lg:pb-20 lg:pt-44">
 	<div class="container-x">
 		<h1 class="mx-auto max-w-3xl animate-[fadeIn_700ms_ease-out] text-center text-5xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl">Got something in mind? Talk to us.</h1>
 	</div>
 </section>
+<?php endif; ?>
 
 <section class="bg-white py-16 lg:py-24">
 	<div class="container-x grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
