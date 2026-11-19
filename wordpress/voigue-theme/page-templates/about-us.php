@@ -30,7 +30,7 @@ $voigue_steps = array(
 	),
 );
 ?>
-<section class="relative flex min-h-[78svh] items-end overflow-hidden bg-brand-navy text-white">
+<section class="relative flex min-h-[78svh] items-end overflow-hidden bg-brand-navy text-white lg:aspect-[16/10] lg:max-h-[100svh] lg:min-h-0">
 	<?php voigue_photo( 'about_hero', 'absolute inset-0', 'People photo', 'The Voigue team' ); ?>
 	<div class="absolute inset-0 bg-[linear-gradient(to_top,rgba(12,6,34,0.85),rgba(12,6,34,0.15)_70%)]"></div>
 	<div class="container-x relative pb-14 pt-36 lg:pb-20">

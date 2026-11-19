@@ -46,7 +46,7 @@ if ( is_array( $voigue_terms ) ) {
 	<div class="container-x">
 		<div class="reveal max-w-3xl">
 			<h2 class="text-5xl font-semibold leading-none tracking-tight text-ink sm:text-6xl lg:text-7xl">Life around here.</h2>
-			<p class="mt-6 text-lg leading-8 text-muted">Parties, community days, plans that make it out of the group chat and plenty we probably have too many photos of by now.</p>
+			<p class="mt-6 text-lg leading-8 text-muted">Parties, community days and plenty we probably have too many photos of by now.</p>
 		</div>
 
 		<div class="mt-12 md:px-6">
@@ -61,9 +61,6 @@ if ( is_array( $voigue_terms ) ) {
 						?>
 						<figure class="group relative w-[72%] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[calc(33.333%-16px)] lg:w-[calc(25%-18px)]" data-category="<?php echo esc_attr( $voigue_cat ? $voigue_cat->slug : '' ); ?>">
 							<?php voigue_render_photo( (int) get_post_thumbnail_id(), 'aspect-[3/4] w-full transition duration-500 group-hover:scale-[1.03]', get_the_title(), get_the_title() ); ?>
-							<?php if ( $voigue_cat ) : ?>
-								<figcaption class="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-ink backdrop-blur"><?php echo esc_html( $voigue_cat->name ); ?></figcaption>
-							<?php endif; ?>
 						</figure>
 					<?php endwhile; ?>
 				</div>
