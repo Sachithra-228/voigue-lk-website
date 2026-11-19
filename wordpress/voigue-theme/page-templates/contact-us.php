@@ -26,7 +26,7 @@ $voigue_about = get_page_by_path( 'about-us' );
 ?>
 <?php $voigue_hero_photo = voigue_media_url( 'contact_hero' ); ?>
 <?php if ( $voigue_hero_photo ) : ?>
-<section class="relative flex min-h-[60svh] items-center justify-center overflow-hidden bg-brand-navy text-center text-white lg:aspect-[16/10] lg:max-h-[100svh] lg:min-h-0">
+<section class="relative flex min-h-[60svh] items-center justify-center overflow-hidden bg-brand-navy text-center text-white lg:aspect-[16/10] w-full lg:max-h-[100svh] lg:min-h-0">
 	<img class="absolute inset-0 h-full w-full object-cover" src="<?php echo esc_url( $voigue_hero_photo ); ?>" alt="" decoding="async" fetchpriority="high">
 	<div class="absolute inset-0 bg-ink/45" aria-hidden="true"></div>
 	<div class="container-x relative pb-12 pt-36">
